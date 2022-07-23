@@ -1,0 +1,25 @@
+f = open('17-f.txt')
+s = [int(i) for i in f]
+kmax = 0
+k = 0
+flag = 0
+num = 0
+for i in range(2,len(s)):
+    num1 = s[i-2]
+    num2 = s[i-1]
+    if flag == 0:
+        if num1 == num2 == 1:
+            flag = 1
+            k += 2
+    if (flag==1) and (s[i] == num1 + num2):
+        k += 1
+    elif (flag==1) and (s[i] != num1 + num2):
+        kmax = max(kmax, k)
+        num += 1
+        flag = 0
+        k = 0
+if k != 0:
+    num += 1
+    kmax = max(kmax, k)
+print(num,kmax)
+f.close()
