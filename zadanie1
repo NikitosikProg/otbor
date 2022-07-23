@@ -1,0 +1,12 @@
+f = open('17-m.txt')
+s = [int(i) for i in f]
+k = 0
+maxi = 0
+for i in range(len(s) - 1):
+    for j in range(i + 1, len(s)):
+        sred = (s[i] + s[j])/2
+        if (((sred % s[i]) == 2) and ((sred + s[j]) > 13131) or (((sred % s[j]) == 2) and ((sred + s[i]) > 13131))):
+            k += 1
+            maxi = max(maxi, s[i]+s[j])
+print(k, maxi)
+f.close()
